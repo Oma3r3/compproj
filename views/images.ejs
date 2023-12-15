@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<style>
+    body {
+        margin: 0px;
+        padding: 0px;
+        background-color: #00011e;
+    }
+    
+    .card-cont {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 130px;
+    }
+    
+    .card-cont h1 {
+        color: white;
+    }
+    
+    .snip1515 {
+        font-family: 'Open Sans', Arial, sans-serif;
+        position: relative;
+        margin: 10px;
+        min-width: 200px;
+        max-width: 300px;
+        width: 100%;
+        color: #000000;
+        text-align: center;
+        line-height: 1.4em;
+        font-size: 14px;
+        box-shadow: none !important;
+        /* background-color: #808080; */
+        /* border: 1px solid black; */
+    }
+    
+    .snip1515 * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    
+    .snip1515 .profile-image {
+        display: inline-block;
+        width: 80%;
+        z-index: 1;
+        position: relative;
+        padding: 10px;
+        border: 2px solid #e8b563;
+    }
+    
+    .snip1515 .profile-image img {
+        max-width: 100%;
+        vertical-align: top;
+    }
+    
+    .snip1515 figcaption {
+        width: 100%;
+        background-color: #F2F2F2;
+        color: #434343;
+        padding: 110px 25px 25px;
+        margin-top: -100px;
+        display: inline-block;
+        /* border: 1px solid black; */
+    }
+    
+    .snip1515 h3 {
+        margin: 0 0 5px;
+    }
+    
+    .snip1515 h3 {
+        font-weight: 800;
+        font-size: 1.6em;
+        font-family: 'Playfair Display', Arial, sans-serif;
+    }
+    
+    .snip1515 h4 {
+        margin-top: 10px;
+        color: #8c8c8c;
+        font-weight: 600;
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+    
+    .snip1515 .icons {
+        padding-top: 1rem;
+        justify-content: space-evenly;
+        display: flex;
+        width: 100%;
+    }
+    
+    .snip1515 ion-icon {
+        font-size: 35px;
+        font-weight: normal;
+        color: #151515;
+        opacity: 0.6;
+    }
+    
+    .snip1515 ion-icon:hover {
+        opacity: 1;
+        color: #000000;
+        -webkit-transition: all 0.35s ease;
+        transition: all 0.35s ease;
+    }
+    
+    nav {
+        height: 5rem;
+        width: 100vw;
+        background-color: #131418;
+        box-shadow: 5px 3px 20px rgba(249, 247, 247, 0.2);
+        display: flex;
+        justify-content: space-between;
+        position: fixed;
+        z-index: 10;
+        font-family: sans-serif;
+        letter-spacing: 1px;
+        font-weight: 300;
+    }
+    
+    .nav-logo-head {
+        display: flex;
+        align-items: center;
+        padding-left: 1rem;
+        gap: 1.2rem;
+    }
+    
+    .logo img {
+        height: 3rem;
+        filter: contrast(0) brightness(10);
+    }
+    
+    .nav-header {
+        color: #00d9ff;
+        font-size: x-large;
+        /* margin: 1.6rem 0.1rem; */
+        font-weight: 500;
+    }
+    
+    .nav-links {
+        display: flex;
+        list-style: none;
+        /* width: 60vw; */
+        padding: 0 0.7vw;
+        justify-content: end;
+        align-items: center;
+        text-transform: uppercase;
+    }
+    
+    .nav-links li a {
+        color: #f2f5f7;
+        text-decoration: none;
+        margin: 0 0.7vw;
+    }
+    
+    .nav-links li a:hover {
+        color: #61DAFB;
+    }
+    
+    .nav-links li {
+        position: relative;
+    }
+    
+    .nav-links li a::before {
+        content: "";
+        display: block;
+        height: 1px;
+        width: 0%;
+        background-color: #61DAFB;
+        position: absolute;
+        transition: all ease-in-out 250ms;
+        margin: 1.1rem 0 0 10%;
+    }
+    
+    .nav-links li a:hover::before {
+        width: 80%;
+    }
+    
+    .login-button {
+        color: #f2f5f7;
+        background-color: transparent;
+        border: 1.5px solid #f2f5f7;
+        border-radius: 1.3rem;
+        padding: 0.6rem 0.8rem;
+        margin-left: 2vw;
+        margin-right: 1.8vw;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+    
+    .login-button:hover {
+        color: #131418;
+        background-color: #f2f5f7;
+        border: 1.5px solid #f2f5f7;
+        transition: all ease-in-out 350ms;
+    }
+    
+    .hamburger div {
+        width: 30px;
+        height: 3px;
+        background: #f2f5f7;
+        margin: 5px;
+        transition: all 1s ease;
+    }
+    
+    .hamburger {
+        display: none;
+    }
+    
+    #cardform {
+        /* border: 1px solid white; */
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 275px;
+        height: 310px;
+        color: white;
+        background-color: black;
+        border-radius: 20px;
+        box-shadow: 0 0 10px white;
+        margin-top: 30px;
+    }
+    
+    .formcontainer input {
+        margin: 10px 0px;
+    }
+    
+    .formcontainer {
+        margin-top: 90px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px solid white; */
+        margin-bottom: 20px;
+    }
+    
+    .formcontainer H1 {
+        color: white;
+    }
+    
+    .header {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        top: 100px;
+        color: white;
+    }
+    
+    .formheader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px solid white; */
+    }
+    
+    .formheader h1 {
+        margin-right: 20px;
+    }
+    
+    .formheader button {
+        width: 80px;
+        height: 30px;
+        font-weight: bold;
+        background: none;
+        color: white;
+        border-style: none;
+        border: 1px solid white;
+    }
+    
+    @media screen and (max-width: 710px) {
+        nav {
+            position: fixed;
+            z-index: 3;
+        }
+        .hamburger {
+            display: block;
+            position: absolute;
+            cursor: pointer;
+            right: 5%;
+            top: 50%;
+            transform: translate(-5%, -50%);
+            z-index: 2;
+            transition: all 1s ease;
+        }
+        .nav-links {
+            position: fixed;
+            background: #131418;
+            height: 30%;
+            width: 100%;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            clip-path: circle(50px at 90% -20%);
+            -webkit-clip-path: circle(50px at 90% -10%);
+            transition: all 1s ease-out;
+            pointer-events: none;
+        }
+        .nav-links.open {
+            clip-path: circle(1000px at 90% -10%);
+            -webkit-clip-path: circle(1000px at 90% -10%);
+            pointer-events: all;
+        }
+        .nav-links li {
+            opacity: 0;
+        }
+        .nav-links li:nth-child(1) {
+            transition: all 0.5s ease 0.3s;
+        }
+        .nav-links li:nth-child(2) {
+            transition: all 0.5s ease 0.2s;
+        }
+        .nav-links li:nth-child(3) {
+            transition: all 0.5s ease 0.2s;
+        }
+        .nav-links li:nth-child(4) {
+            transition: all 0.5s ease 0.2s;
+            margin-left: -0.3em;
+        }
+        /* .nav-links li:nth-child(5){
+      transition: all 0.5s ease 0.1s;
+  }
+  .nav-links li:nth-child(6){
+      transition: all 0.5s ease 0.1s;
+       transform: translateX(-20%);
+      margin-left: -1em;
+  } */
+        /* .nav-links li:nth-child(7){
+      transition: all 0.5s ease 1s;
+      margin: 0;
+  } */
+        li.fade {
+            opacity: 1;
+        }
+    }
+    
+    .toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .toggle .line2 {
+        transition: all 0.7s ease;
+        width: 0;
+    }
+    
+    .toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+    
+    @media(max-width: 412px) {
+        nav {
+            position: fixed;
+            z-index: 3;
+        }
+        .logo img {
+            height: 2.5rem;
+            transition: height 0.5s ease-in-out 0.1s;
+        }
+        .nav-header {
+            font-size: larger;
+            transition: font-size 0.7s ease-in-out 0.2s;
+        }
+        .header {
+            text-align: center;
+        }
+        .formheader {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+</style>
+
+
+<body>
+    <div class="wrapper">
+        <nav>
+            <div class="nav-logo-head">
+
+                <div class="logo">
+                    <img src="./favicon.png" alt="Logo Image">
+                </div>
+                <div class="nav-header">
+                    WCE CLUB PORTAL
+                </div>
+            </div>
+            <div class="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/homepage">Home</a></li>
+                <li><a href="/reservations">Requests</a></li>
+                <li><a href="/addevents">Events</a></li>
+                <li><a href="/images">Clubs</a></li>
+                <!-- <li><a href="#">Services</a></li>
+        <li><a href="login.html">Contact Us</a></li> -->
+                <li><button onclick="location.href = '/';" class="login-button">Logout</button></li>
+                <!-- <li><button class="join-button" href="#">Join</button></li> -->
+            </ul>
+        </nav>
+
+        <div class="header">
+            <h1>LIST OF CLUB MEMEBERS</h1>
+        </div>
+
+
+        <div class="card-cont">
+            <%if(Object.keys(dt).length){%>
+                <%for(i = 0; i<Object.keys(dt).length; i++){%>
+                    <figure class="snip1515">
+                        <div class="profile-image"><img src=" <%= dt[i].imagelink %> " alt="sample47" /></div>
+                        <figcaption>
+                            <h3>
+                                <%= dt[i].name %>
+                            </h3>
+                            <h4>
+                                <%= dt[i].position %>
+                            </h4>
+                            <div class="icons">
+                                <a href="#">
+                                    <ion-icon name="logo-instagram"></ion-icon>
+                                </a>
+                                <a href="#">
+                                    <ion-icon name="logo-linkedin"></ion-icon>
+                                </a>
+                                <a href="#">
+                                    <ion-icon name="mail"></ion-icon>
+                                </a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <%}%>
+                        <%} else { %>
+                            <div>
+                                <h1>NO DATA AVAILABLE</h1>
+                            </div>
+                            <%}%>
+        </div>
+
+        <div class="formcontainer">
+            <div class="formheader">
+                <h1>ADD A CLUB MEMEBER</h1>
+                <button onclick="displayit()"> + ADD</button>
+            </div>
+            <form action="/images" method="post" enctype="multipart/form-data" id="cardform">
+                <label for="">Import an image</label>
+                <input type="file" name="img" placeholder="Enter Image">
+                <input type="text" name="name" placeholder="Enter Name">
+                <input type="text" name="position" placeholder="Enter Position">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script>
+            function displayit() {
+                var d = document.getElementById("cardform");
+                if (d.style.display == 'none') {
+                    d.style.display = "flex";
+                } else {
+                    d.style.display = "none";
+                }
+
+            }
+        </script>
+
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script> -->
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <!-- <script src="index.js"></script> -->
+        <script>
+            const hamburger = document.querySelector(".hamburger");
+            const navLinks = document.querySelector(".nav-links");
+            const links = document.querySelectorAll(".nav-links li");
+
+            hamburger.addEventListener('click', () => {
+                //Animate Links
+                navLinks.classList.toggle("open");
+                links.forEach(link => {
+                    link.classList.toggle("fade");
+                });
+
+                //Hamburger Animation
+                hamburger.classList.toggle("toggle");
+            });
+
+            var slidePosition = 1;
+            SlideShow(slidePosition);
+
+            // forward/Back controls
+            function plusSlides(n) {
+                SlideShow(slidePosition += n);
+            }
+
+            //  images controls
+            function currentSlide(n) {
+                SlideShow(slidePosition = n);
+            }
+
+            function SlideShow(n) {
+                var i;
+                var slides = document.getElementsByClassName("Containers");
+                var circles = document.getElementsByClassName("dots");
+                if (n > slides.length) {
+                    slidePosition = 1
+                }
+                if (n < 1) {
+                    slidePosition = slides.length
+                }
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                for (i = 0; i < circles.length; i++) {
+                    circles[i].className = circles[i].className.replace(" enable", "");
+                }
+                slides[slidePosition - 1].style.display = "flex";
+                circles[slidePosition - 1].className += " enable";
+            }
+        </script>
+
+    </div>
+
+</body>
+
+</html>
